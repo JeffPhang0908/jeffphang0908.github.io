@@ -15,8 +15,9 @@
         li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-size: 16px; }
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
+        .minus-badge { color: #e74c3c; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         
-        /* Matching Timetable Layout */
+        /* Timetable Layout */
         .schedule-list li { display: block; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; line-height: 1.6; color: #333; }
         .day-label { font-weight: bold; color: #4a90e2; display: inline-block; width: 55px; }
         .class-item { display: block; margin-left: 55px; font-size: 15px; color: #444; }
@@ -30,12 +31,14 @@
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
+        .btn-red { background: #e74c3c; }
+        .btn-red:hover { background: #c0392b; }
         .btn-green { background: #2ecc71; }
         .btn-green:hover { background: #27ae60; }
         .btn-orange { background: #e67e22; }
         .btn-orange:hover { background: #d35400; }
-        .reset-btn { background: #e74c3c; margin-top: 20px; padding: 10px 20px; }
-        .reset-btn:hover { background: #c0392b; }
+        .reset-btn { background: #7f8c8d; margin-top: 20px; padding: 10px 20px; }
+        .reset-btn:hover { background: #95a5a6; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -48,13 +51,14 @@
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
-                    <li><div class="task-info"><strong>Complete Homework</strong><span class="star-badge">⭐ +1 Star</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
-                    <li><div class="task-info"><strong>Clean Up Room or Table</strong><span class="star-badge">⭐ +1 Star (Daily after playing/studying)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
-                    <li><div class="task-info"><strong>Sleep on Time (9:00 PM)</strong><span class="star-badge">⭐ +1 Star (At night)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
-                    <li><div class="task-info"><strong>Extraordinary School Achievement</strong><span class="star-badge">⭐ +5 Stars (Classes or school success)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(5)">Claim</button></li>
+                    <li><div class="task-info"><strong>Complete Homework</strong><span class="star-badge">⭐ +1 Star</span></div><button class="btn-blue" onclick="modifyStars(1, true)">Claim</button></li>
+                    <li><div class="task-info"><strong>Clean Up Room or Table</strong><span class="star-badge">⭐ +1 Star (Daily after playing/studying)</span></div><button class="btn-blue" onclick="modifyStars(1, true)">Claim</button></li>
+                    <li><div class="task-info"><strong>Sleep on Time (9:00 PM)</strong><span class="star-badge">⭐ +1 Star (At night)</span></div><button class="btn-blue" onclick="modifyStars(1, true)">Claim</button></li>
+                    <li><div class="task-info"><strong>Extraordinary School Achievement</strong><span class="star-badge">⭐ +5 Stars (Classes or school success)</span></div><button class="btn-blue" onclick="modifyStars(5, true)">Claim</button></li>
+                    <li style="background: #fdf2f2; border-radius: 5px; padding: 10px; margin-top: 10px;"><div class="task-info"><strong>Misbehaviour / Rules Broken</strong><span class="minus-badge">⚠️ -1 Star</span></div><button class="btn-red" onclick="modifyStars(1, false)">Deduct</button></li>
                 </ul>
             </div>
-            <!-- Clean Fixed Timetable Section -->
+            <!-- Weekly Schedule Section -->
             <div class="card">
                 <h3>📅 Weekly Schedule</h3>
                 <ul class="schedule-list">
@@ -86,10 +90,13 @@
         const SECRET_PASSWORD = "jeff"; const STARTING_STARS = 323;
         let stars = localStorage.getItem('heroStars') === null ? STARTING_STARS : parseInt(localStorage.getItem('heroStars'));
         document.getElementById('star-count').innerText = stars;
-        function checkPasswordAndAdd(amount) {
-            let input = prompt("Enter parent password to approve stars:");
-            if (input === SECRET_PASSWORD) { stars += amount; document.getElementById('star-count').innerText = stars; localStorage.setItem('heroStars', stars); alert("🎉 Success! " + amount + " star(s) added."); }
-            else if (input !== null) { alert("❌ Incorrect password. Try again!"); }
+        function modifyStars(amount, isAdding) {
+            let input = prompt("Enter parent password to verify action:");
+            if (input === SECRET_PASSWORD) {
+                if (isAdding) { stars += amount; alert("🎉 Success! " + amount + " star(s) added."); } 
+                else { stars = Math.max(0, stars - amount); alert("⚠️ Attention! " + amount + " star(s) deducted."); }
+                document.getElementById('star-count').innerText = stars; localStorage.setItem('heroStars', stars);
+            } else if (input !== null) { alert("❌ Incorrect password. Try again!"); }
         }
         function resetStars() {
             let input = prompt("Enter parent password to reset the tracker:");
@@ -109,6 +116,3 @@
         function saveRewards() {
             let newValue = document.getElementById('input-rewards').value; localStorage.setItem('heroRewardsShop', newValue); document.getElementById('display-rewards').innerText = newValue; document.getElementById('display-rewards').style.display = 'block'; document.getElementById('input-rewards').style.display = 'none'; document.getElementById('edit-rewards-btn').style.display = 'inline-block'; document.getElementById('save-rewards-btn').style.display = 'none'; alert("💾 Rewards list updated successfully!"); }
         window.onload = function() { loadRewards(); };
-    </script>
-</body>
-</html>
