@@ -16,7 +16,7 @@
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         
-        /* Timetable Layout */
+        /* Timetable Grid */
         .timetable-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; }
         .timetable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 10px; }
         .day-column { background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
@@ -24,7 +24,7 @@
         .schedule-text { font-size: 14px; color: #555; white-space: pre-wrap; min-height: 80px; line-height: 1.5; }
         .schedule-input { width: 100%; min-height: 80px; font-family: inherit; font-size: 14px; padding: 5px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #4a90e2; border-radius: 4px; }
         
-        /* Interactive Buttons */
+        /* Utility Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
@@ -42,7 +42,7 @@
         <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">323</span></div>
         
         <div class="grid">
-            <!-- Targets Section -->
+            <!-- Targets List -->
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
@@ -77,7 +77,7 @@
                 </ul>
             </div>
             
-            <!-- Timetable Section -->
+            <!-- Dynamic Timetable Section -->
             <div class="card">
                 <div class="timetable-header">
                     <h3>📅 Weekly Timetable</h3>
@@ -107,7 +107,7 @@
         const STARTING_STARS = 323;
         const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
         
-        // --- Star Functions ---
+        // --- Star Tracker Engine ---
         let stars = localStorage.getItem('heroStars') === null ? STARTING_STARS : parseInt(localStorage.getItem('heroStars'));
         document.getElementById('star-count').innerText = stars;
 
@@ -137,7 +137,7 @@
             }
         }
 
-        // --- Timetable Functions ---
+        // --- Timetable Engine ---
         const defaultTimetable = {
             mon: "9:00 AM Math\n4:00 PM Homework",
             tue: "10:00 AM English\n3:00 PM Free Time",
@@ -164,25 +164,4 @@
                     document.getElementById('display-' + day).style.display = 'none';
                     document.getElementById('input-' + day).style.display = 'block';
                 });
-document.getElementById('edit-schedule-btn').style.display = 'none';
-document.getElementById('save-schedule-btn').style.display = 'inline-block';
-} else if (input !== null) {
-alert("❌ Incorrect password. Access denied!");
-}
-}
-
-function saveSchedule() {
-DAYS.forEach(day => {
-let newValue = document.getElementById('input-' + day).value;
-localStorage.setItem('schedule-' + day, newValue);
-document.getElementById('display-' + day).innerText = newValue;
-document.getElementById('display-' + day).style.display = 'block';
-document.getElementById('input-' + day).style.display = 'none';
-});
-document.getElementById('edit-schedule-btn').style.display = 'inline-block';
-document.getElementById('save-schedule-btn').style.display = 'none';
-alert("💾 Timetable successfully updated!");
-}
-
-// Initialize dashboard elements
-loadTimetable();
+                document.getElementById('edit-schedule-btn').style.display = 'none';
