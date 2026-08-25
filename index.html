@@ -37,28 +37,28 @@ html<!DOCTYPE html>
                             <strong>Complete Homework</strong>
                             <span class="star-badge">⭐ +1 Star</span>
                         </div>
-                        <button onclick="addStar(1)">Claim</button>
+                        <button onclick="checkPasswordAndAdd(1)">Claim</button>
                     </li>
                     <li>
                         <div class="task-info">
                             <strong>Clean Up Room or Table</strong>
                             <span class="star-badge">⭐ +1 Star (Daily after playing/studying)</span>
                         </div>
-                        <button onclick="addStar(1)">Claim</button>
+                        <button onclick="checkPasswordAndAdd(1)">Claim</button>
                     </li>
                     <li>
                         <div class="task-info">
                             <strong>Sleep on Time (9:00 PM)</strong>
                             <span class="star-badge">⭐ +1 Star (At night)</span>
                         </div>
-                        <button onclick="addStar(1)">Claim</button>
+                        <button onclick="checkPasswordAndAdd(1)">Claim</button>
                     </li>
                     <li>
                         <div class="task-info">
                             <strong>Extraordinary School Achievement</strong>
                             <span class="star-badge">⭐ +5 Stars (Classes or school success)</span>
                         </div>
-                        <button onclick="addStar(5)">Claim</button>
+                        <button onclick="checkPasswordAndAdd(5)">Claim</button>
                     </li>
                 </ul>
             </div>
@@ -82,20 +82,33 @@ html<!DOCTYPE html>
     </div>
 
     <script>
+        const SECRET_PASSWORD = "jeff";
         let stars = parseInt(localStorage.getItem('heroStars')) || 0;
         document.getElementById('star-count').innerText = stars;
 
-        function addStar(amount) {
-            stars += amount;
-            document.getElementById('star-count').innerText = stars;
-            localStorage.setItem('heroStars', stars);
+        function checkPasswordAndAdd(amount) {
+            let input = prompt("Enter parent password to approve stars:");
+            if (input === SECRET_PASSWORD) {
+                stars += amount;
+                document.getElementById('star-count').innerText = stars;
+                localStorage.setItem('heroStars', stars);
+                alert("🎉 Success! " + amount + " star(s) added.");
+            } else if (input !== null) {
+                alert("❌ Incorrect password. Try again!");
+            }
         }
 
         function resetStars() {
-            if (confirm("Are you sure you want to reset the star count to 0?")) {
-                stars = 0;
-                document.getElementById('star-count').innerText = stars;
-                localStorage.setItem('heroStars', stars);
+            let input = prompt("Enter parent password to reset the tracker:");
+            if (input === SECRET_PASSWORD) {
+                if (confirm("Are you sure you want to reset the star count to 0?")) {
+                    stars = 0;
+                    document.getElementById('star-count').innerText = stars;
+                    localStorage.setItem('heroStars', stars);
+                    alert("Tracker reset to 0.");
+                }
+            } else if (input !== null) {
+                alert("❌ Incorrect password.");
             }
         }
     </script>
