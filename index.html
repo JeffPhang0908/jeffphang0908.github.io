@@ -1,0 +1,61 @@
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Goal Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #4a90e2; }
+        .stars { font-size: 24px; color: #f5a623; margin: 20px 0; font-weight: bold; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .card { background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #eee; text-align: left; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 10px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        button { background: #4a90e2; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #357abd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 My Daily Targets & Goals</h1>
+        <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">0</span></div>
+        
+        <div class="grid">
+            <!-- Goals Section -->
+            <div class="card">
+                <h3>Target List</h3>
+                <ul>
+                    <li>Make the Bed <button onclick="addStar(1)">+1 Star</button></li>
+                    <li>Brush Teeth <button onclick="addStar(1)">+1 Star</button></li>
+                    <li>Finish Homework <button onclick="addStar(2)">+2 Stars</button></li>
+                    <li>Clean Room <button onclick="addStar(3)">+3 Stars</button></li>
+                </ul>
+            </div>
+            
+            <!-- Calendar Section -->
+            <div class="card">
+                <h3>Weekly Schedule</h3>
+                <ul>
+                    <li><strong>Mon:</strong> Homework Review</li>
+                    <li><strong>Wed:</strong> Soccer Practice</li>
+                    <li><strong>Fri:</strong> Movie Night Milestone</li>
+                    <li><strong>Sat:</strong> Park Playtime</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let stars = parseInt(localStorage.getItem('heroStars')) || 0;
+        document.getElementById('star-count').innerText = stars;
+
+        function addStar(amount) {
+            stars += amount;
+            document.getElementById('star-count').innerText = stars;
+            localStorage.setItem('heroStars', stars);
+        }
+    </script>
+</body>
+</html>
