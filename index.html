@@ -1,4 +1,4 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@ html<!DOCTYPE html>
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         
-        /* Timetable Styles */
+        /* Timetable Layout */
         .timetable-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; }
         .timetable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 10px; }
         .day-column { background: #fff; padding: 12px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
@@ -24,7 +24,7 @@ html<!DOCTYPE html>
         .schedule-text { font-size: 14px; color: #555; white-space: pre-wrap; min-height: 80px; line-height: 1.5; }
         .schedule-input { width: 100%; min-height: 80px; font-family: inherit; font-size: 14px; padding: 5px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #4a90e2; border-radius: 4px; }
         
-        /* Buttons */
+        /* Interactive Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
@@ -42,7 +42,7 @@ html<!DOCTYPE html>
         <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">323</span></div>
         
         <div class="grid">
-            <!-- Goals & Chores Section -->
+            <!-- Targets Section -->
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
@@ -77,7 +77,7 @@ html<!DOCTYPE html>
                 </ul>
             </div>
             
-            <!-- Dynamic Calendar Section -->
+            <!-- Timetable Section -->
             <div class="card">
                 <div class="timetable-header">
                     <h3>📅 Weekly Timetable</h3>
@@ -88,41 +88,13 @@ html<!DOCTYPE html>
                 </div>
                 
                 <div class="timetable-grid">
-                    <div class="day-column">
-                        <div class="day-title">Monday</div>
-                        <div id="display-mon" class="schedule-text"></div>
-                        <textarea id="input-mon" class="schedule-input" placeholder="e.g.&#10;9:00 AM Class&#10;4:00 PM Homework"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Tuesday</div>
-                        <div id="display-tue" class="schedule-text"></div>
-                        <textarea id="input-tue" class="schedule-input" placeholder="e.g.&#10;10:00 AM Music"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Wednesday</div>
-                        <div id="display-wed" class="schedule-text"></div>
-                        <textarea id="input-wed" class="schedule-input" placeholder="e.g.&#10;3:30 PM Soccer"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Thursday</div>
-                        <div id="display-thu" class="schedule-text"></div>
-                        <textarea id="input-thu" class="schedule-input"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Friday</div>
-                        <div id="display-fri" class="schedule-text"></div>
-                        <textarea id="input-fri" class="schedule-input"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Saturday</div>
-                        <div id="display-sat" class="schedule-text"></div>
-                        <textarea id="input-sat" class="schedule-input"></textarea>
-                    </div>
-                    <div class="day-column">
-                        <div class="day-title">Sunday</div>
-                        <div id="display-sun" class="schedule-text"></div>
-                        <textarea id="input-sun" class="schedule-input"></textarea>
-                    </div>
+                    <div class="day-column"><div class="day-title">Monday</div><div id="display-mon" class="schedule-text"></div><textarea id="input-mon" class="schedule-input" placeholder="e.g.&#10;9:00 AM Math"></textarea></div>
+                    <div class="day-column"><div class="day-title">Tuesday</div><div id="display-tue" class="schedule-text"></div><textarea id="input-tue" class="schedule-input" placeholder="e.g.&#10;10:00 AM English"></textarea></div>
+                    <div class="day-column"><div class="day-title">Wednesday</div><div id="display-wed" class="schedule-text"></div><textarea id="input-wed" class="schedule-input" placeholder="e.g.&#10;3:30 PM Soccer"></textarea></div>
+                    <div class="day-column"><div class="day-title">Thursday</div><div id="display-thu" class="schedule-text"></div><textarea id="input-thu" class="schedule-input"></textarea></div>
+                    <div class="day-column"><div class="day-title">Friday</div><div id="display-fri" class="schedule-text"></div><textarea id="input-fri" class="schedule-input"></textarea></div>
+                    <div class="day-column"><div class="day-title">Saturday</div><div id="display-sat" class="schedule-text"></div><textarea id="input-sat" class="schedule-input"></textarea></div>
+                    <div class="day-column"><div class="day-title">Sunday</div><div id="display-sun" class="schedule-text"></div><textarea id="input-sun" class="schedule-input"></textarea></div>
                 </div>
             </div>
         </div>
@@ -135,7 +107,7 @@ html<!DOCTYPE html>
         const STARTING_STARS = 323;
         const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
         
-        // --- Star Tracker Logic ---
+        // --- Star Functions ---
         let stars = localStorage.getItem('heroStars') === null ? STARTING_STARS : parseInt(localStorage.getItem('heroStars'));
         document.getElementById('star-count').innerText = stars;
 
@@ -165,8 +137,7 @@ html<!DOCTYPE html>
             }
         }
 
-        // --- Online Timetable Logic ---
-        // Load default or saved timetable items
+        // --- Timetable Functions ---
         const defaultTimetable = {
             mon: "9:00 AM Math\n4:00 PM Homework",
             tue: "10:00 AM English\n3:00 PM Free Time",
@@ -180,3 +151,17 @@ html<!DOCTYPE html>
         function loadTimetable() {
             DAYS.forEach(day => {
                 let savedData = localStorage.getItem('schedule-' + day);
+                let currentContent = savedData !== null ? savedData : defaultTimetable[day];
+                document.getElementById('display-' + day).innerText = currentContent;
+                document.getElementById('input-' + day).value = currentContent;
+            });
+        }
+
+        function enableScheduleEdit() {
+            let input = prompt("Enter parent password to modify the weekly timetable:");
+            if (input === SECRET_PASSWORD) {
+                DAYS.forEach(day => {
+                    document.getElementById('display-' + day).style.display = 'none';
+                    document.getElementById('input-' + day).style.display = 'block';
+                });
+document.getElementById('save-schedule-btn').style.display = 'inline-block';} else if (input !== null) {alert("❌ Incorrect password. Access denied!");}}function saveSchedule() {DAYS.forEach(day => {let newValue = document.getElementById('input-' + day).value;localStorage.setItem('schedule-' + day, newValue);document.getElementById('display-' + day).innerText = newValue;document.getElementById('display-' + day).style.display = 'block';document.getElementById('input-' + day).style.display = 'none';});document.getElementById('edit-schedule-btn').style.display = 'inline-block';document.getElementById('save-schedule-btn').style.display = 'none';alert("💾 Timetable successfully updated!");}// Initialize dashboard elementsloadTimetable();
