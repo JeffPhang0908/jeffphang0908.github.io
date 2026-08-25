@@ -15,10 +15,18 @@
         li { padding: 12px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; font-size: 16px; }
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
-        .schedule-time { display: block; font-size: 13px; color: #666; margin-top: 2px; }
+        
+        /* Matching Timetable Layout */
+        .schedule-list li { display: block; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; line-height: 1.6; color: #333; }
+        .day-label { font-weight: bold; color: #4a90e2; display: inline-block; width: 55px; }
+        .class-item { display: block; margin-left: 55px; font-size: 15px; color: #444; }
+        
+        /* Rewards Layout */
         .rewards-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #2ecc71; padding-bottom: 5px; }
         .rewards-text { font-size: 15px; color: #333; white-space: pre-wrap; min-height: 100px; line-height: 1.6; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
         .rewards-input { width: 100%; min-height: 120px; font-family: inherit; font-size: 15px; padding: 10px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #2ecc71; border-radius: 8px; line-height: 1.6; }
+        
+        /* Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
@@ -36,6 +44,7 @@
         <h1>🚀 My Daily Targets & Goals</h1>
         <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">323</span></div>
         <div class="grid">
+            <!-- Targets Section -->
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
@@ -45,19 +54,21 @@
                     <li><div class="task-info"><strong>Extraordinary School Achievement</strong><span class="star-badge">⭐ +5 Stars (Classes or school success)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(5)">Claim</button></li>
                 </ul>
             </div>
+            <!-- Clean Fixed Timetable Section -->
             <div class="card">
                 <h3>📅 Weekly Schedule</h3>
-                <ul>
-                    <li><strong>Monday:</strong> Art Class<span class="schedule-time">⏰ 04:30 PM to 06:00 PM</span></li>
-                    <li><strong>Tuesday:</strong> Classes<span class="schedule-time">⏰ 02:30 PM to 03:30 PM Chess | 03:30 PM to 05:40 PM Chinese</span></li>
-                    <li><strong>Wednesday:</strong> Soccer Class<span class="schedule-time">⏰ 02:40 PM to 03:40 PM</span></li>
-                    <li><strong>Thursday:</strong> Chinese Class<span class="schedule-time">⏰ 04:00 PM to 05:00 PM</span></li>
-                    <li><strong>Friday:</strong> Tasks<span class="schedule-time">⏰ 03:00 PM-03:30 PM Reading | 04:00 PM-04:45 PM Basketball | 09:00 PM Mathematics</span></li>
-                    <li><strong>Saturday:</strong> Chinese<span class="schedule-time">⏰ 10:00 AM to 10:30 AM</span></li>
-                    <li><strong>Sunday:</strong> Activities<span class="schedule-time">⏰ 11:00 AM to 12:30 PM Reading | 03:30 PM to 05:00 PM Swimming Class</span></li>
+                <ul class="schedule-list">
+                    <li><span class="day-label">Mon</span> <span class="class-item">04:30 PM to 06:00 PM - Art Class</span></li>
+                    <li><span class="day-label">Tues</span> <span class="class-item">02:30 PM to 03:30 PM - Chess Class</span><span class="class-item">03:30 PM to 05:40 PM - Chinese Class</span></li>
+                    <li><span class="day-label">Wed</span> <span class="class-item">02:40 PM to 03:40 PM - Soccer Class</span></li>
+                    <li><span class="day-label">Thu</span> <span class="class-item">04:00 PM to 05:00 PM - Chinese Class</span></li>
+                    <li><span class="day-label">Fri</span> <span class="class-item">03:00 PM to 03:30 PM - Reading</span><span class="class-item">04:00 PM to 04:45 PM - Basketball</span><span class="class-item">09:00 PM to 09:30 PM - Mathematics</span></li>
+                    <li><span class="day-label">Sat</span> <span class="class-item">10:00 AM to 10:30 AM - Chinese Class</span></li>
+                    <li><span class="day-label">Sun</span> <span class="class-item">11:00 AM to 12:30 PM - Reading</span><span class="class-item">03:30 PM to 05:00 PM - Swimming Class</span></li>
                 </ul>
             </div>
         </div>
+        <!-- Rewards Section -->
         <div class="card" style="margin-top: 20px;">
             <div class="rewards-header">
                 <h3>🎁 Rewards Shop</h3>
@@ -96,8 +107,7 @@
             else if (input !== null) { alert("❌ Incorrect password. Access denied!"); }
         }
         function saveRewards() {
-            let newValue = document.getElementById('input-rewards').value; localStorage.setItem('heroRewardsShop', newValue); document.getElementById('display-rewards').innerText = newValue; document.getElementById('display-rewards').style.display = 'block'; document.getElementById('input-rewards').style.display = 'none'; document.getElementById('edit-rewards-btn').style.display = 'inline-block'; document.getElementById('save-rewards-btn').style.display = 'none'; alert("💾 Rewards list updated successfully!");
-        }
+            let newValue = document.getElementById('input-rewards').value; localStorage.setItem('heroRewardsShop', newValue); document.getElementById('display-rewards').innerText = newValue; document.getElementById('display-rewards').style.display = 'block'; document.getElementById('input-rewards').style.display = 'none'; document.getElementById('edit-rewards-btn').style.display = 'inline-block'; document.getElementById('save-rewards-btn').style.display = 'none'; alert("💾 Rewards list updated successfully!"); }
         window.onload = function() { loadRewards(); };
     </script>
 </body>
