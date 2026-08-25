@@ -16,18 +16,12 @@
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         .minus-badge { color: #e74c3c; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
-        
-        /* Timetable Layout */
         .schedule-list li { display: block; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; line-height: 1.6; color: #333; }
         .day-label { font-weight: bold; color: #4a90e2; display: inline-block; width: 55px; }
         .class-item { display: block; margin-left: 55px; font-size: 15px; color: #444; }
-        
-        /* Rewards Layout */
         .rewards-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #2ecc71; padding-bottom: 5px; }
         .rewards-text { font-size: 15px; color: #333; white-space: pre-wrap; min-height: 100px; line-height: 1.6; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
         .rewards-input { width: 100%; min-height: 120px; font-family: inherit; font-size: 15px; padding: 10px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #2ecc71; border-radius: 8px; line-height: 1.6; }
-        
-        /* Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
@@ -47,7 +41,6 @@
         <h1>🚀 My Daily Targets & Goals</h1>
         <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">323</span></div>
         <div class="grid">
-            <!-- Targets Section -->
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
@@ -58,7 +51,6 @@
                     <li style="background: #fdf2f2; border-radius: 5px; padding: 10px; margin-top: 10px;"><div class="task-info"><strong>Misbehaviour / Rules Broken</strong><span class="minus-badge">⚠️ -1 Star</span></div><button class="btn-red" onclick="modifyStars(1, false)">Deduct</button></li>
                 </ul>
             </div>
-            <!-- Weekly Schedule Section -->
             <div class="card">
                 <h3>📅 Weekly Schedule</h3>
                 <ul class="schedule-list">
@@ -72,7 +64,6 @@
                 </ul>
             </div>
         </div>
-        <!-- Rewards Section -->
         <div class="card" style="margin-top: 20px;">
             <div class="rewards-header">
                 <h3>🎁 Rewards Shop</h3>
@@ -116,3 +107,6 @@
         function saveRewards() {
             let newValue = document.getElementById('input-rewards').value; localStorage.setItem('heroRewardsShop', newValue); document.getElementById('display-rewards').innerText = newValue; document.getElementById('display-rewards').style.display = 'block'; document.getElementById('input-rewards').style.display = 'none'; document.getElementById('edit-rewards-btn').style.display = 'inline-block'; document.getElementById('save-rewards-btn').style.display = 'none'; alert("💾 Rewards list updated successfully!"); }
         window.onload = function() { loadRewards(); };
+    </script>
+</body>
+</html>
