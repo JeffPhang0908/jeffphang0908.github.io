@@ -17,10 +17,19 @@
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         .schedule-time { display: block; font-size: 13px; color: #666; margin-top: 2px; }
         
+        /* Rewards Custom Section */
+        .rewards-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #2ecc71; padding-bottom: 5px; }
+        .rewards-text { font-size: 15px; color: #333; white-space: pre-wrap; min-height: 100px; line-height: 1.6; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
+        .rewards-input { width: 100%; min-height: 120px; font-family: inherit; font-size: 15px; padding: 10px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #2ecc71; border-radius: 8px; line-height: 1.6; }
+        
         /* Interactive Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
+        .btn-green { background: #2ecc71; }
+        .btn-green:hover { background: #27ae60; }
+        .btn-orange { background: #e67e22; }
+        .btn-orange:hover { background: #d35400; }
         .reset-btn { background: #e74c3c; margin-top: 20px; padding: 10px 20px; }
         .reset-btn:hover { background: #c0392b; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
@@ -106,6 +115,19 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Customizable Rewards Section -->
+        <div class="card" style="margin-top: 20px;">
+            <div class="rewards-header">
+                <h3>🎁 Rewards Shop</h3>
+                <div>
+                    <button id="edit-rewards-btn" class="btn-orange" onclick="enableRewardsEdit()">⚙️ Edit Rewards</button>
+                    <button id="save-rewards-btn" class="btn-green" onclick="saveRewards()" style="display: none;">💾 Save Rewards</button>
+                </div>
+            </div>
+            <div id="display-rewards" class="rewards-text"></div>
+            <textarea id="input-rewards" class="rewards-input" placeholder="Free type your awards balance system here...&#10;e.g.&#10;⭐ 330 Stars = 30 mins Screen Time&#10;⭐ 350 Stars = Ice Cream Treat&#10;⭐ 400 Stars = New Toy!"></textarea>
+        </div>
         
         <button class="reset-btn" onclick="resetStars()">🔄 Reset Star Count</button>
     </div>
@@ -143,6 +165,18 @@
                 alert("❌ Incorrect password.");
             }
         }
-    </script>
-</body>
-</html>
+
+        // --- Custom Customizable Rewards Engine ---
+        const defaultRewards = "⭐ 330 Stars = 30 Mins iPad Time\n⭐ 350 Stars = Choice of Weekend Dinner\n⭐ 400 Stars = Brand New Toy / Comic Book";
+
+        function loadRewards() {
+            let savedRewards = localStorage.getItem('heroRewardsShop');
+            let currentContent = savedRewards !== null ? savedRewards : defaultRewards;
+            document.getElementById('display-rewards').innerText = currentContent;
+            document.getElementById('input-rewards').value = currentContent;
+        }
+
+        function enableRewardsEdit() {
+            let input = prompt("Enter parent password to modify the Rewards Shop:");
+            if (input === SECRET_PASSWORD) {
+                document.getElementById('display-rewards').style.display = 'none';
