@@ -16,13 +16,9 @@
         .task-info { max-width: 70%; line-height: 1.4; }
         .star-badge { color: #f5a623; font-weight: bold; font-size: 14px; display: block; margin-top: 2px; }
         .schedule-time { display: block; font-size: 13px; color: #666; margin-top: 2px; }
-        
-        /* Rewards Layout */
         .rewards-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #2ecc71; padding-bottom: 5px; }
         .rewards-text { font-size: 15px; color: #333; white-space: pre-wrap; min-height: 100px; line-height: 1.6; background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
         .rewards-input { width: 100%; min-height: 120px; font-family: inherit; font-size: 15px; padding: 10px; box-sizing: border-box; display: none; resize: vertical; border: 1px solid #2ecc71; border-radius: 8px; line-height: 1.6; }
-        
-        /* Interactive Buttons */
         button { color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .btn-blue { background: #4a90e2; }
         .btn-blue:hover { background: #357abd; }
@@ -39,84 +35,29 @@
     <div class="container">
         <h1>🚀 My Daily Targets & Goals</h1>
         <div class="stars">⭐ Total Stars Accumulated: <span id="star-count">323</span></div>
-        
         <div class="grid">
-            <!-- Targets Section -->
             <div class="card">
                 <h3>🎯 Target List</h3>
                 <ul>
-                    <li>
-                        <div class="task-info">
-                            <strong>Complete Homework</strong>
-                            <span class="star-badge">⭐ +1 Star</span>
-                        </div>
-                        <button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button>
-                    </li>
-                    <li>
-                        <div class="task-info">
-                            <strong>Clean Up Room or Table</strong>
-                            <span class="star-badge">⭐ +1 Star (Daily after playing/studying)</span>
-                        </div>
-                        <button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button>
-                    </li>
-                    <li>
-                        <div class="task-info">
-                            <strong>Sleep on Time (9:00 PM)</strong>
-                            <span class="star-badge">⭐ +1 Star (At night)</span>
-                        </div>
-                        <button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button>
-                    </li>
-                    <li>
-                        <div class="task-info">
-                            <strong>Extraordinary School Achievement</strong>
-                            <span class="star-badge">⭐ +5 Stars (Classes or school success)</span>
-                        </div>
-                        <button class="btn-blue" onclick="checkPasswordAndAdd(5)">Claim</button>
-                    </li>
+                    <li><div class="task-info"><strong>Complete Homework</strong><span class="star-badge">⭐ +1 Star</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
+                    <li><div class="task-info"><strong>Clean Up Room or Table</strong><span class="star-badge">⭐ +1 Star (Daily after playing/studying)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
+                    <li><div class="task-info"><strong>Sleep on Time (9:00 PM)</strong><span class="star-badge">⭐ +1 Star (At night)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(1)">Claim</button></li>
+                    <li><div class="task-info"><strong>Extraordinary School Achievement</strong><span class="star-badge">⭐ +5 Stars (Classes or school success)</span></div><button class="btn-blue" onclick="checkPasswordAndAdd(5)">Claim</button></li>
                 </ul>
             </div>
-            
-            <!-- Fixed Timetable Section -->
             <div class="card">
                 <h3>📅 Weekly Schedule</h3>
                 <ul>
-                    <li>
-                        <strong>Monday:</strong> Art Class
-                        <span class="schedule-time">⏰ 04:30 PM to 06:00 PM</span>
-                    </li>
-                    <li>
-                        <strong>Tuesday:</strong> Chess Class & Chinese Class
-                        <span class="schedule-time">⏰ 02:30 PM to 03:30 PM - Chess Class</span>
-                        <span class="schedule-time">⏰ 03:30 PM to 05:40 PM - Chinese Class</span>
-                    </li>
-                    <li>
-                        <strong>Wednesday:</strong> Soccer Class
-                        <span class="schedule-time">⏰ 02:40 PM to 03:40 PM</span>
-                    </li>
-                    <li>
-                        <strong>Thursday:</strong> Chinese Class
-                        <span class="schedule-time">⏰ 04:00 PM to 05:00 PM</span>
-                    </li>
-                    <li>
-                        <strong>Friday:</strong> Reading, Basketball & Mathematics
-                        <span class="schedule-time">⏰ 03:00 PM to 03:30 PM - Reading</span>
-                        <span class="schedule-time">⏰ 04:00 PM to 04:45 PM - Basketball</span>
-                        <span class="schedule-time">⏰ 09:00 PM - Mathematics</span>
-                    </li>
-                    <li>
-                        <strong>Saturday:</strong> Chinese
-                        <span class="schedule-time">⏰ 10:00 AM to 10:30 AM</span>
-                    </li>
-                    <li>
-                        <strong>Sunday:</strong> Reading & Swimming Class
-                        <span class="schedule-time">⏰ 11:00 AM to 12:30 PM - Reading</span>
-                        <span class="schedule-time">⏰ 03:30 PM to 05:00 PM - Swimming Class</span>
-                    </li>
+                    <li><strong>Monday:</strong> Art Class<span class="schedule-time">⏰ 04:30 PM to 06:00 PM</span></li>
+                    <li><strong>Tuesday:</strong> Classes<span class="schedule-time">⏰ 02:30 PM to 03:30 PM Chess | 03:30 PM to 05:40 PM Chinese</span></li>
+                    <li><strong>Wednesday:</strong> Soccer Class<span class="schedule-time">⏰ 02:40 PM to 03:40 PM</span></li>
+                    <li><strong>Thursday:</strong> Chinese Class<span class="schedule-time">⏰ 04:00 PM to 05:00 PM</span></li>
+                    <li><strong>Friday:</strong> Tasks<span class="schedule-time">⏰ 03:00 PM-03:30 PM Reading | 04:00 PM-04:45 PM Basketball | 09:00 PM Mathematics</span></li>
+                    <li><strong>Saturday:</strong> Chinese<span class="schedule-time">⏰ 10:00 AM to 10:30 AM</span></li>
+                    <li><strong>Sunday:</strong> Activities<span class="schedule-time">⏰ 11:00 AM to 12:30 PM Reading | 03:30 PM to 05:00 PM Swimming Class</span></li>
                 </ul>
             </div>
         </div>
-
-        <!-- Customizable Rewards Section -->
         <div class="card" style="margin-top: 20px;">
             <div class="rewards-header">
                 <h3>🎁 Rewards Shop</h3>
@@ -126,83 +67,38 @@
                 </div>
             </div>
             <div id="display-rewards" class="rewards-text"></div>
-            <textarea id="input-rewards" class="rewards-input" placeholder="Free type your awards balance system here...&#10;e.g.&#10;⭐ 330 Stars = 30 mins Screen Time&#10;⭐ 350 Stars = Ice Cream Treat"></textarea>
+            <textarea id="input-rewards" class="rewards-input" placeholder="Type rewards here..."></textarea>
         </div>
-        
         <button class="reset-btn" onclick="resetStars()">🔄 Reset Star Count</button>
     </div>
-
     <script>
-        const SECRET_PASSWORD = "jeff";
-        const STARTING_STARS = 323;
-        
-        // --- Star Tracker Engine ---
+        const SECRET_PASSWORD = "jeff"; const STARTING_STARS = 323;
         let stars = localStorage.getItem('heroStars') === null ? STARTING_STARS : parseInt(localStorage.getItem('heroStars'));
         document.getElementById('star-count').innerText = stars;
-
         function checkPasswordAndAdd(amount) {
             let input = prompt("Enter parent password to approve stars:");
-            if (input === SECRET_PASSWORD) {
-                stars += amount;
-                document.getElementById('star-count').innerText = stars;
-                localStorage.setItem('heroStars', stars);
-                alert("🎉 Success! " + amount + " star(s) added.");
-            } else if (input !== null) {
-                alert("❌ Incorrect password. Try again!");
-            }
+            if (input === SECRET_PASSWORD) { stars += amount; document.getElementById('star-count').innerText = stars; localStorage.setItem('heroStars', stars); alert("🎉 Success! " + amount + " star(s) added."); }
+            else if (input !== null) { alert("❌ Incorrect password. Try again!"); }
         }
-
         function resetStars() {
             let input = prompt("Enter parent password to reset the tracker:");
-            if (input === SECRET_PASSWORD) {
-                if (confirm("Are you sure you want to reset the star count to 323?")) {
-                    stars = STARTING_STARS;
-                    document.getElementById('star-count').innerText = stars;
-                    localStorage.setItem('heroStars', stars);
-                    alert("Tracker reset to 323.");
-                }
-            } else if (input !== null) {
-                alert("❌ Incorrect password.");
-            }
+            if (input === SECRET_PASSWORD) { if (confirm("Are you sure you want to reset the star count to 323?")) { stars = STARTING_STARS; document.getElementById('star-count').innerText = stars; localStorage.setItem('heroStars', stars); alert("Tracker reset to 323."); } }
+            else if (input !== null) { alert("❌ Incorrect password."); }
         }
-
-        // --- Custom Rewards Engine ---
         const defaultRewards = "⭐ 330 Stars = 30 Mins iPad Time\n⭐ 350 Stars = Choice of Weekend Dinner\n⭐ 400 Stars = New Toy";
-
         function loadRewards() {
-            let savedRewards = localStorage.getItem('heroRewardsShop');
-            let currentContent = savedRewards !== null ? savedRewards : defaultRewards;
-            document.getElementById('display-rewards').innerText = currentContent;
-            document.getElementById('input-rewards').value = currentContent;
+            let savedRewards = localStorage.getItem('heroRewardsShop'); let currentContent = savedRewards !== null ? savedRewards : defaultRewards;
+            document.getElementById('display-rewards').innerText = currentContent; document.getElementById('input-rewards').value = currentContent;
         }
-
         function enableRewardsEdit() {
             let input = prompt("Enter parent password to modify the Rewards Shop:");
-            if (input === SECRET_PASSWORD) {
-                document.getElementById('display-rewards').style.display = 'none';
-                document.getElementById('input-rewards').style.display = 'block';
-                document.getElementById('edit-rewards-btn').style.display = 'none';
-                document.getElementById('save-rewards-btn').style.display = 'inline-block';
-            } else if (input !== null) {
-                alert("❌ Incorrect password. Access denied!");
-            }
+            if (input === SECRET_PASSWORD) { document.getElementById('display-rewards').style.display = 'none'; document.getElementById('input-rewards').style.display = 'block'; document.getElementById('edit-rewards-btn').style.display = 'none'; document.getElementById('save-rewards-btn').style.display = 'inline-block'; }
+            else if (input !== null) { alert("❌ Incorrect password. Access denied!"); }
         }
-
         function saveRewards() {
-            let newValue = document.getElementById('input-rewards').value;
-            localStorage.setItem('heroRewardsShop', newValue);
-            document.getElementById('display-rewards').innerText = newValue;
-            document.getElementById('display-rewards').style.display = 'block';
-            document.getElementById('input-rewards').style.display = 'none';
-            document.getElementById('edit-rewards-btn').style.display = 'inline-block';
-            document.getElementById('save-rewards-btn').style.display = 'none';
-            alert("💾 Rewards list updated successfully!");
+            let newValue = document.getElementById('input-rewards').value; localStorage.setItem('heroRewardsShop', newValue); document.getElementById('display-rewards').innerText = newValue; document.getElementById('display-rewards').style.display = 'block'; document.getElementById('input-rewards').style.display = 'none'; document.getElementById('edit-rewards-btn').style.display = 'inline-block'; document.getElementById('save-rewards-btn').style.display = 'none'; alert("💾 Rewards list updated successfully!");
         }
-
-        // Run on Startup
-        window.onload = function() {
-            loadRewards();
-        };
+        window.onload = function() { loadRewards(); };
     </script>
 </body>
 </html>
